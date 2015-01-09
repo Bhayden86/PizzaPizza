@@ -10,7 +10,7 @@ import Foundation
 protocol PizzaOrdering{
     func set_size(size:Sizes)
     func set_toppings(toppings:Array<Toppings>)
-    func address(address:String)
+    func addresss(address:String)
     func get_time_delivered()->Int
     
 }
@@ -19,4 +19,36 @@ enum Toppings {
 }
 enum Sizes{
     case Small,Medium,Large
+}
+
+class LittleCs: PizzaOrdering {
+    var pizzas:Array<Pizza> = []
+    var pizza:Pizza = Pizza()
+    func set_size(size: Sizes) {
+        pizza.size = size
+    }
+    func set_toppings(toppings: Array<Toppings>) {
+        pizza.toppings = toppings
+    }
+    func addresss(address: String) {
+        pizza.address = address
+    }
+    func get_time_delivered() -> Int {
+        pizzas.append(pizza)
+       return pizzas.count*10
+    }
+    
+    func orderPizza(sizes:Sizes, toppings:Array<Toppings>, address:String)
+    {
+        set_size(sizes)
+        set_toppings(toppings)
+        addresss(address)
+        println(get_time_delivered())
+    }
+}
+
+class Pizza {
+    var toppings:Array<Toppings>?
+    var size: Sizes?
+    var address:String = String()
 }
